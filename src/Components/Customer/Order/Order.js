@@ -68,12 +68,9 @@ const Order = () => {
 
     const handleSubmit = (e) => {
         const newOrder = { ...signedInUser, ...order, ...orderDetail };
-        const formData = new FormData()
-        formData.append('file', files)
-        formData.append('newOrder', newOrder)
         fetch('https://fierce-forest-06981.herokuapp.com/users', {
             method: 'POST',
-            body: formData
+            body: newOrder
         })
             .then(res => res.json())
             .then(data => {
