@@ -24,7 +24,7 @@ const AddService = () => {
         formData.append('title', services.title)
         formData.append('description', services.description)
 
-        fetch('http://localhost:8000/addAService', {
+        fetch('https://fierce-forest-06981.herokuapp.com/addAService', {
             method: 'POST',
             body: formData
         })

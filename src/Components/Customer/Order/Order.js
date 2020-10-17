@@ -17,7 +17,7 @@ const Order = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:8000/services/${id}`)
+        fetch(`https://fierce-forest-06981.herokuapp.com/services/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -71,7 +71,7 @@ const Order = () => {
         const formData = new FormData()
         formData.append('file', files)
         formData.append('newOrder', newOrder)
-        fetch('http://localhost:8000/addAService', {
+        fetch('https://fierce-forest-06981.herokuapp.com/addAService', {
             method: 'POST',
             body: formData
         })

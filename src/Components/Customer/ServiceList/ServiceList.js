@@ -8,7 +8,7 @@ const ServiceList = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/users?email=' + loggedInUser.email)
+        fetch('https://fierce-forest-06981.herokuapp.com/users?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 setOrders(data);

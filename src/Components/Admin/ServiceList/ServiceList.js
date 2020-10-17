@@ -6,7 +6,7 @@ const ServiceList = () => {
     const [lists, setLists] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/users')
+        fetch('https://fierce-forest-06981.herokuapp.com/users')
             .then(res => res.json())
             .then(data => {
                 setLists(data);

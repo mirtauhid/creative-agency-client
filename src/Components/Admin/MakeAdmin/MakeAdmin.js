@@ -18,7 +18,7 @@ const MakeAdmin = () => {
     const handleSubmit = (e) => {
         e.persist();
         const email = admin.email;
-        fetch('http://localhost:8000/admin?email=' + email)
+        fetch('https://fierce-forest-06981.herokuapp.com/admin?email=' + email)
             .then(res => res.json())
             .then(data => {
                 if (data.length === 0) {
@@ -40,7 +40,7 @@ const MakeAdmin = () => {
         e.preventDefault();
         if (admin.email != null && admin.email != "") {
             const newAdmin = { ...admin };
-            fetch('http://localhost:8000/admin', {
+            fetch('https://fierce-forest-06981.herokuapp.com/admin', {
                 method: 'POST',
                 headers: { 'Content-Type': ' application/json' },
                 body: JSON.stringify(newAdmin)

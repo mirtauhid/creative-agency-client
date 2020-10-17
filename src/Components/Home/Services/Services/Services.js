@@ -6,7 +6,7 @@ import ServiceCard from '../ServiceCard/ServiceCard';
 const Services = () => {
     const [service, setService] = useState([])
     useEffect(() => {
-        fetch('http://localhost:8000/services')
+        fetch('https://fierce-forest-06981.herokuapp.com/services')
             .then(res => res.json())
             .then(data => {
                 setService(data);

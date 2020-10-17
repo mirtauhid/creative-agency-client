@@ -18,7 +18,7 @@ const Review = () => {
         formData.append('company', reviews.company)
         formData.append('review', reviews.review)
 
-        fetch('http://localhost:8000/addAReview', {
+        fetch('https://fierce-forest-06981.herokuapp.com/addAReview', {
             method: 'POST',
             body: formData
         })
