@@ -70,7 +70,8 @@ const Order = () => {
         const newOrder = { ...signedInUser, ...order, ...orderDetail };
         fetch('https://fierce-forest-06981.herokuapp.com/users', {
             method: 'POST',
-            body: newOrder
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newOrder)
         })
             .then(res => res.json())
             .then(data => {
