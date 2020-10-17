@@ -32,7 +32,7 @@ const Footer = () => {
                 <br />
                 <br />
                 <br />
-                <h6 className="text-center"><small>copyright Orange labs 2020</small></h6>
+                <h6 className="text-center"><small>copyright || mir tauhidul islam </small></h6>
             </Container>
         </section>
     );
