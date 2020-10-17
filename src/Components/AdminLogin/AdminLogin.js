@@ -7,13 +7,12 @@ import { UserContext } from '../../App';
 import { useState } from 'react';
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import firebaseConfig from './firebase.config';
 import { useHistory, useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import firebaseConfig from '../Login/firebase.config';
 
 
 
-const Login = () => {
+const AdminLogin = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [user, setUser] = useState({
         isSignedIn: false,
@@ -67,7 +66,7 @@ const Login = () => {
     }
 
     const pageRedirect = (id) => {
-        history.push(`/customer/order/${id}`);
+        history.push(`/admin`);
     }
 
 
@@ -77,13 +76,12 @@ const Login = () => {
         <Container className="login-container text-center">
             <img className="logo" src={mainLogo} alt="" />
             <div className="login-box">
-                <h3>Login With</h3>
+                <h3 style={{color: 'red'}}>Login with admin credentials</h3>
                 <br />
                 <Button onClick={(e) => handleSignIn(e)} className="loginBtn mb-1" variant="light"><span><img className="gIcon" src={Google} alt="" /></span> Continue with Google</Button>
-                <p style={{ fontWeight: '600' }}>For admin login <Link to="/admin-login">Click Here</Link> </p>
             </div>
         </Container>
     );
 };
 
-export default Login;
+export default AdminLogin;

@@ -7,6 +7,9 @@ import NotFound from './Components/NotFound/NotFound';
 import Customer from './Components/Customer/Customer/Customer';
 import Admin from './Components/Admin/Admin/Admin';
 import { useState } from 'react';
+import PrivateRoute from './Components/privateRoute/PrivateRoute';
+import AdminRoute from './Components/AdminRoute/AdminRoute';
+import AdminLogin from '../src/Components/AdminLogin/AdminLogin';
 
 export const UserContext = createContext();
 
@@ -25,12 +28,15 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/customer">
-            <Customer />
+          <Route path="/admin-login">
+            <AdminLogin />
           </Route>
-          <Route path="/admin">
+          <AdminRoute path="/admin">
             <Admin />
-          </Route>
+          </AdminRoute>
+          <PrivateRoute path="/customer">
+            <Customer />
+          </PrivateRoute>
           <Route path="*">
             <NotFound />
           </Route>

@@ -6,12 +6,15 @@ import { useParams } from 'react-router';
 import { UserContext } from '../../../App';
 import '../../Style/Style.css';
 
+
 const Order = () => {
     const [order, setOrder] = useState({});
     const [orderDetail, setOrderDetail] = useState({});
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [signedInUser, setSignedInUser] = useState({});
     const { id } = useParams();
+    const [files, setFiles] = useState(null);
+
 
     useEffect(() => {
         fetch(`http://localhost:8000/services/${id}`)
@@ -65,10 +68,12 @@ const Order = () => {
 
     const handleSubmit = (e) => {
         const newOrder = { ...signedInUser, ...order, ...orderDetail };
-        fetch('http://localhost:8000/users', {
+        const formData = new FormData()
+        formData.append('file', files)
+        formData.append('newOrder', newOrder)
+        fetch('http://localhost:8000/addAService', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newOrder)
+            body: formData
         })
             .then(res => res.json())
             .then(data => {
@@ -86,7 +91,7 @@ const Order = () => {
 
     return (
         <div>
-            <Form id="orderForm" onSubmit={(e) => handleSubmit(e)} style={{ width: '50%', border: 'none' }}>
+            <Form id="orderForm"  style={{ width: '50%', border: 'none' }}>
                 <Form.Group controlId="exampleForm.ControlInput1">
 
                     <Form.Control type="text" id="fullName" placeholder="Your name / company’s name" />
@@ -107,7 +112,7 @@ const Order = () => {
                     <Form.Control type="text" placeholder="Price" />
                     <Form.File style={{ color: 'transparent' }} id="exampleFormControlFile1" />
                 </Form.Group>
-                <Button className="blackButton" type="submit" variant="primary" >Send</Button>
+                <Button onClick={(e) => handleSubmit(e)} className="blackButton" type="submit" variant="primary" >Send</Button>
             </Form>
         </div>
     );
